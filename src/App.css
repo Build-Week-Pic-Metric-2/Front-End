@@ -20,3 +20,40 @@
 .App-link {
   color: #09d3ac;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  width: 380px;
+  height: 200px;
+  padding: 2%;
+}
+.user-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-field{
+  width: 150px;
+  
+}
+.field-error{
+  display: flex;
+  color: red;
+  align-items: baseline;
+}
+.error {
+  margin: unset;
+  margin-left: 1%;
+}
+.tos{
+  color: black;
+}
+.reg-btn{
+  margin: auto;
+  width: 200px;
+  height: 50px;
+}
+reg-h1{
+  margin: 0 0 4% 0;
+}

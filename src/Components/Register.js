@@ -3,32 +3,39 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const RegistrationForm = ({ values, errors, touched, status }) => {
+const RegistrationForm = ({ values, errors, touched, status }) => {    
     const [user, setUser] = useState([]);
     useEffect(()=>{
         status && setUser(user => [...user, status])
     },[status]);
 
     return (
-        <div className={"user-form"}>
-            <Form>
-                <Field type="text" name="username" placeholder="Username"/>
-                {touched.username && errors.username && (<p className='error'>{errors.username}</p>)}
-                <Field type="text" name="email" placeholder="user@email.com"/>
-                {touched.email && errors.email && (<p className='error'>{errors.email}</p>)}
-                <Field type="text" name="password" placeholder="password"/>
-                {touched.password && errors.password && (<p className='error'>{errors.password}</p>)}
-                <Field type="checkbox" name="tos" checked={values.tos}/>
-                {touched.tos && errors.tos && (<p className='error'>{errors.tos}</p>)}
-                <button>submit</button>
+        <div className="user-form">
+            <Form className='form'>
+                <h1 class="reg-h1">Create an account to get started!</h1>
+                <div className="field-error">
+                    <Field className='form-field' type="text" name="username" placeholder="Username"/>
+                    {touched.username && errors.username && (<p className='error'>{errors.username}</p>)}
+                </div>
+                <div className="field-error">
+                    <Field className='form-field' type="text" name="email" placeholder="user@email.com"/>
+                    {touched.email && errors.email && (<p className='error'>{errors.email}</p>)}
+                </div>
+                <div className="field-error">
+                    <Field className='form-field' type="text" name="password" placeholder="password"/>
+                    {touched.password && errors.password && (<p className='error'>{errors.password}</p>)}
+                </div>
+                <div className="field-error">
+                    <p className='form-field tos'><Field type="checkbox" name="tos" checked={values.tos}/>Terms of Service</p>
+                    {touched.tos && errors.tos && (<p className='error'>{errors.tos}</p>)}
+                </div>
+                <button className="reg-btn">Create Account</button>
             </Form>
-            {/*{user.map(users => (*/}
-            {/*    <ul key={user.id}>*/}
-            {/*        <li>First Name: {users.username}</li>*/}
-            {/*        <li>e-mail: {users.email}</li>*/}
-            {/*        <li>password: {users.password}</li>*/}
-            {/*    </ul>*/}
-            {/*))}*/}
+            {user.map(users => (
+                <div>
+                    <p>You have successfully created an account under ${users.username} and can log in.</p>
+                </div>
+            ))}
         </div>
     );
 };
