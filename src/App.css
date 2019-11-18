@@ -20,3 +20,12 @@
 .App-link {
   color: #09d3ac;
 }
+.form {
+  display: flex;
+  width: 400px;
+  height: 500px;
+}
+.user-form {
+  display: flex;
+  justify-content: center;
+}
