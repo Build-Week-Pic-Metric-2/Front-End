@@ -3,12 +3,83 @@ import {FETCH_USERPICS_START, FETCH_USERPICS_SUCCESS, FETCH_USERPICS_FAILURE, PO
 export const initialState = {
     pics: [],
     isLoading: false,
-    error: null
+    error: null,
+    isDeleting: false
 
 }
 export const reducer=(state=initialState, actions)=> {
     switch(actions.type){
+        case FETCH_USERPICS_START:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case FETCH_USERPICS_SUCCESS: 
+        return {
+            ...state,
+            isLoading: false,
+            pics: action.payload
+        }
+        case FETCH_USERPICS_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case POST_USERPICS_START:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case POST_USERPICS_SUCCESS: 
+            return {
+                ...state,
+                isLoading: false,
+                pics: [...state.pics, action.payload]
+            }
+        case POST_USERPICS_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        case EDIT_USERPICS_START:
+            return {
+                ...state,
+                isLoading: true
+            }
+        case EDIT_USERPICS_SUCCESS: 
+            return {
+                ...state,
+                isLoading: false,
+                pics: action.payload
+            }
+        case EDIT_USERPICS_FAILURE:
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
 
-        
+        case DELETE_USERPICS_START:
+            return {
+                ...state,
+                isDeleting: true
+            }
+        case DELETE_USERPICS_SUCCESS: 
+            return {
+                ...state,
+                isDeleting: false,
+                pics: action.payload
+            }
+        case DELETE_USERPICS_FAILURE:
+            return {
+                ...state,
+                isDeleting: false,
+                error: action.payload
+            }
+        default:
+            return state
+    
     }
 }
