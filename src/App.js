@@ -6,6 +6,7 @@ import {getToken} from "./helpers/api"
 
 import { Route } from 'react-router-dom'
 import { Button, Row } from 'reactstrap'
+import Logout from "./Components/Logout"
 // import Header from './Components/Header'
 import WelcomePage from './Components/WelcomePage'
 // import Login from './Components/Login'
@@ -44,6 +45,8 @@ export default function App() {
         <Route exact path="/" component={WelcomePage}/>
         <Route path="/register" component={Register}/>
         <Route exact path="/login" component={Login} />
+        <ProtectedRoute exact path="/account" component={Account}/>
+        <ProtectedRoute exact path='/logout' component={Logout} />
 
       </section>
   )
