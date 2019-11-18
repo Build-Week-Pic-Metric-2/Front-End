@@ -7,8 +7,8 @@ export const initialState = {
     isDeleting: false
 
 }
-export const reducer=(state=initialState, actions)=> {
-    switch(actions.type){
+export default function reducer(state=initialState, action){
+    switch(action.type){
         case FETCH_USERPICS_START:
             return {
                 ...state,
