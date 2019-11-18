@@ -18,13 +18,13 @@ export const reducer=(state=initialState, actions)=> {
         return {
             ...state,
             isLoading: false,
-            pics: action.payload
+            pics: actions.payload
         }
         case FETCH_USERPICS_FAILURE:
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload
+                error: actions.payload
             }
         case POST_USERPICS_START:
             return {
@@ -35,13 +35,13 @@ export const reducer=(state=initialState, actions)=> {
             return {
                 ...state,
                 isLoading: false,
-                pics: [...state.pics, action.payload]
+                pics: [...state.pics, actions.payload]
             }
         case POST_USERPICS_FAILURE:
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload
+                error: actions.payload
             }
         case EDIT_USERPICS_START:
             return {
@@ -52,13 +52,13 @@ export const reducer=(state=initialState, actions)=> {
             return {
                 ...state,
                 isLoading: false,
-                pics: action.payload
+                pics: actions.payload
             }
         case EDIT_USERPICS_FAILURE:
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload
+                error: actions.payload
             }
 
         case DELETE_USERPICS_START:
@@ -70,13 +70,13 @@ export const reducer=(state=initialState, actions)=> {
             return {
                 ...state,
                 isDeleting: false,
-                pics: action.payload
+                pics: actions.payload
             }
         case DELETE_USERPICS_FAILURE:
             return {
                 ...state,
                 isDeleting: false,
-                error: action.payload
+                error: actions.payload
             }
         default:
             return state

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import ProtectedRoute from "./helpers/ProtectedRoute"
 
@@ -8,36 +8,38 @@ import { Button, Row } from 'reactstrap'
 import WelcomePage from './Components/WelcomePage'
 // import Login from './Components/Login'
 import Register from './Components/Register'
+import { NavLink } from "react-router-dom";
 
 
-export default function App(props) {
-  const [refresh, setRefresh] = useState(false);
-  const [getUrl, setGetUrl] = useState(``);
+export default function App() {
+  // const [refresh, setRefresh] = useState(false);
+  // const [getUrl, setGetUrl] = useState(``);
 
-  const changeHandler = e => {
-    props.history.push("/r");
-    setGetUrl("https://picmetric1.herokuapp.com/" + e.target.id);
-    setRefresh(!refresh)
-  };
+  // useEffect(() =>
+  //   {
+  //
+  //   },[]);
+
+  // const changeHandlerRegistration = () => {
+  //   // props.history.push("/register");
+  //   setGetUrl("");
+  // };
 
 
 
 
   return (
-      <body>
+      <section>
         {/*<Header />*/}
         <Row>
-          <Button onClick={() => {props.history.push("/")}}>Home</Button>
-          <Button id="Register" onClick={changeHandler}>Register</Button>
-          <Button id="Login" onClick={changeHandler}>Login</Button>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/register">Register</NavLink>
         </Row>
 
         <Route exact path="/" component={WelcomePage}/>
+        <Route path="/register" component={Register}/>
 
-        {/*<Route path="/login" render={props => <Login {...props} refresh={refresh} getUrl={getUrl}/>}/>*/}
-        <Route path="/register" render={props => <Register {...props} refresh={refresh} getUrl={getUrl}/>}/>
-
-      </body>
+      </section>
   )
 
 }
