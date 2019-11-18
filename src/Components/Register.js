@@ -12,7 +12,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
     return (
         <div className="user-form">
             <Form className='form'>
-                <h1 class="reg-h1">Create an account to get started!</h1>
+                <h1 className="reg-h1">Create an account to get started!</h1>
                 <div className="field-error">
                     <Field className='form-field' type="text" name="username" placeholder="Username"/>
                     {touched.username && errors.username && (<p className='error'>{errors.username}</p>)}
