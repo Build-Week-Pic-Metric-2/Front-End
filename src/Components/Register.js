@@ -59,7 +59,7 @@ const FormikUserForm = withFormik({
     }),
     handleSubmit(values, {setStatus, resetForm}){
         axios
-            .post("https://picmetric1.herokuapp.com/api/users/", values)
+            .post("https://picmetric1.herokuapp.com/api/auth/register", values)
             .then(res =>{
                 setStatus(res.data);
                 console.log(res);
