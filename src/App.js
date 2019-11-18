@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import ProtectedRoute from "./helpers/ProtectedRoute"
+
 import { Route } from 'react-router-dom'
 import { Button, Row } from 'reactstrap'
 // import Header from './Components/Header'
@@ -22,6 +24,9 @@ export default function App() {
   //   // props.history.push("/register");
   //   setGetUrl("");
   // };
+
+
+
 
   return (
       <section>
