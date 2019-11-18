@@ -10,7 +10,7 @@ export default function() {
     .create ({
         baseURL: 'https://picmetric1.herokuapp.com/api/auth',
         headers: {
-            Authorization: getToken();
+            Authorization: getToken()
         }
     })
 }
