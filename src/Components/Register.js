@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const RegistrationForm = ({ values, errors, touched, status, }) => {
+const RegistrationForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
     useEffect(()=>{
         status && setUser(user => [...user, status])
@@ -22,32 +22,28 @@ const RegistrationForm = ({ values, errors, touched, status, }) => {
                 {touched.tos && errors.tos && (<p className='error'>{errors.tos}</p>)}
                 <button>submit</button>
             </Form>
-            {user.map(users => (
-                <ul key={user.id}>
-                    <li>Username: {users.username}</li>
-                    <li>E-mail: {users.email}</li>
-                    <li>Password: {users.password}</li>
-                </ul>
-            ))}
+            {/*{user.map(users => (*/}
+            {/*    <ul key={user.id}>*/}
+            {/*        <li>First Name: {users.username}</li>*/}
+            {/*        <li>e-mail: {users.email}</li>*/}
+            {/*        <li>password: {users.password}</li>*/}
+            {/*    </ul>*/}
+            {/*))}*/}
         </div>
     );
 };
 
-const FormikRegistration = withFormik({
+const FormikUserForm = withFormik({
     mapPropsToValues({username, email, password, tos}){
         return{
-            first: username || "",
+            username: username || "",
             email: email || "",
             password: password || "",
             tos: tos || false,
         }
     },
     validationSchema: Yup.object().shape({
-        first: Yup
-            .string()
-            .max(15)
-            .required(),
-        last: Yup
+        username: Yup
             .string()
             .max(15)
             .required(),
@@ -61,9 +57,9 @@ const FormikRegistration = withFormik({
             .required(),
         tos: Yup.bool().oneOf([true], `You Must Agree to the ToS.`)
     }),
-    handleSubmit(values, props, {setStatus,}){
+    handleSubmit(values, {setStatus, resetForm}){
         axios
-            .post(props.getUrl, values)
+            .post("https://picmetric1.herokuapp.com/api/users/", values)
             .then(res =>{
                 setStatus(res.data);
                 console.log(res);
@@ -71,7 +67,8 @@ const FormikRegistration = withFormik({
             .catch(err => {
                 console.log(err.response)
             })
+            .finally(resetForm())
     }
 })(RegistrationForm);
 
-export default FormikRegistration;
+export default FormikUserForm;
