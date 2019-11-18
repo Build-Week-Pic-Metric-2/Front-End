@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from "react-router-dom";
-import {Provider} from "redux";
-import {applyMiddleware} from "react-redux";
-import logger from "redux-logger";
-import * as thunk from "redux-thunk";
+// import {Provider} from "redux";
+// import {applyMiddleware} from "react-redux";
+// import logger from "redux-logger";
+// import * as thunk from "redux-thunk";
 
 
 
