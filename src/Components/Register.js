@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import styled from 'styled-
+
 
 const RegistrationForm = ({ values, errors, touched, status }) => {    
     const [user, setUser] = useState([]);
@@ -22,13 +24,11 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
                 {touched.tos && errors.tos && (<p className='error'>{errors.tos}</p>)}
                 <button>submit</button>
             </Form>
-            {/*{user.map(users => (*/}
-            {/*    <ul key={user.id}>*/}
-            {/*        <li>First Name: {users.username}</li>*/}
-            {/*        <li>e-mail: {users.email}</li>*/}
-            {/*        <li>password: {users.password}</li>*/}
-            {/*    </ul>*/}
-            {/*))}*/}
+            {user.map(users => (
+                <div>
+                    <p>You have successfully created an account under ${users.username} and can log in.</p>
+                </div>
+            ))}
         </div>
     );
 };

@@ -4,7 +4,8 @@ export const initialState = {
     pics: [],
     isLoading: false,
     error: null,
-    isDeleting: false
+    isDeleting: false,
+    user: []
 
 }
  export function reducer(state=initialState, action){
