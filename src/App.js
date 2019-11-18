@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import ProtectedRoute from "./helpers/ProtectedRoute"
+import Login from "./Components/Login"
+import {getToken} from "./helpers/api"
 
 import { Route } from 'react-router-dom'
 import { Button, Row } from 'reactstrap'
@@ -8,7 +10,7 @@ import { Button, Row } from 'reactstrap'
 import WelcomePage from './Components/WelcomePage'
 // import Login from './Components/Login'
 import Register from './Components/Register'
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 
 export default function App() {
@@ -25,7 +27,7 @@ export default function App() {
   //   setGetUrl("");
   // };
 
-
+  const signedIn = getToken();
 
 
   return (
@@ -34,10 +36,14 @@ export default function App() {
         <Row>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/register">Register</NavLink>
+              {!signedIn && <Link to="/login">Login</Link>}
+              {signedIn && <Link to="/account">Account</Link>}
+              {signedIn && <Link to="/logout">Logout</Link>}
         </Row>
 
         <Route exact path="/" component={WelcomePage}/>
         <Route path="/register" component={Register}/>
+        <Route exact path="/login" component={Login} />
 
       </section>
   )

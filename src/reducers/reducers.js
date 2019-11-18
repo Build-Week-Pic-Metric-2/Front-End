@@ -7,7 +7,7 @@ export const initialState = {
     isDeleting: false
 
 }
-export default function reducer(state=initialState, action){
+ export function reducer(state=initialState, action){
     switch(action.type){
         case FETCH_USERPICS_START:
             return {
@@ -18,13 +18,13 @@ export default function reducer(state=initialState, action){
         return {
             ...state,
             isLoading: false,
-            pics: actions.payload
+            pics: action.payload
         }
         case FETCH_USERPICS_FAILURE:
             return {
                 ...state,
                 isLoading: false,
-                error: actions.payload
+                error: action.payload
             }
         case POST_USERPICS_START:
             return {
@@ -35,13 +35,13 @@ export default function reducer(state=initialState, action){
             return {
                 ...state,
                 isLoading: false,
-                pics: [...state.pics, actions.payload]
+                pics: [...state.pics, action.payload]
             }
         case POST_USERPICS_FAILURE:
             return {
                 ...state,
                 isLoading: false,
-                error: actions.payload
+                error: action.payload
             }
         case EDIT_USERPICS_START:
             return {
@@ -52,13 +52,13 @@ export default function reducer(state=initialState, action){
             return {
                 ...state,
                 isLoading: false,
-                pics: actions.payload
+                pics: action.payload
             }
         case EDIT_USERPICS_FAILURE:
             return {
                 ...state,
                 isLoading: false,
-                error: actions.payload
+                error: action.payload
             }
 
         case DELETE_USERPICS_START:
@@ -70,16 +70,17 @@ export default function reducer(state=initialState, action){
             return {
                 ...state,
                 isDeleting: false,
-                pics: actions.payload
+                pics: action.payload
             }
         case DELETE_USERPICS_FAILURE:
             return {
                 ...state,
                 isDeleting: false,
-                error: actions.payload
+                error: action.payload
             }
         default:
             return state
     
     }
 }
+

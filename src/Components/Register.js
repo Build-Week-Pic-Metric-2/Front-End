@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const RegistrationForm = ({ values, errors, touched, status }) => {
+const RegistrationForm = ({ values, errors, touched, status }) => {    
     const [user, setUser] = useState([]);
     useEffect(()=>{
         status && setUser(user => [...user, status])
@@ -11,7 +11,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
 
     return (
         <div className={"user-form"}>
-            <Form>
+                        <Form>
                 <Field type="text" name="username" placeholder="Username"/>
                 {touched.username && errors.username && (<p className='error'>{errors.username}</p>)}
                 <Field type="text" name="email" placeholder="user@email.com"/>
