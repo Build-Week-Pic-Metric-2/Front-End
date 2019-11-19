@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { Input } from "@material-ui/core";
 
 const RegistrationForm = ({ values, errors, touched, status }) => {    
     const [user, setUser] = useState([]);
@@ -12,7 +13,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
     return (
         <div className="user-form">
             <Form className='form'>
-                <h1 class="reg-h1">Create an account to get started!</h1>
+                <h1 className="reg-h1">Create an account to get started!</h1>
                 <div className="field-error">
                     <Field className='form-field' type="text" name="username" placeholder="Username"/>
                     {touched.username && errors.username && (<p className='error'>{errors.username}</p>)}
@@ -64,11 +65,10 @@ const FormikUserForm = withFormik({
             .required(),
         tos: Yup.bool().oneOf([true], `You Must Agree to the ToS.`)
     }),
-    handleSubmit(values, {setStatus, resetForm}){
+    handleSubmit({ username, password }, {resetForm}){
         axios
-            .post("https://picmetric1.herokuapp.com/api/auth/register", values)
+            .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
-                setStatus(res.data);
                 console.log(res);
             })
             .catch(err => {
