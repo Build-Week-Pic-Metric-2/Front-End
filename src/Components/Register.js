@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import api from "../helpers/api"
+// import api from "../helpers/api"
 import collage from "./images/piccollage.jpg"
 import photo from "./images/takingPhoto.jpg"
 
@@ -37,7 +37,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
                     <p>You have successfully created an account under ${users.username} and can log in.</p>
                 </div>
             ))}
-            <img src={photo}  width= "400" height= "350" className="photo" alt="Person taking photo" />
+            <img src={photo}  width= "400" height= "350" className="photo" alt="Person taking pic" />
         </div>
     );
 };
@@ -55,10 +55,10 @@ const FormikUserForm = withFormik({
             .string()
             .max(15)
             .required(),
-        email: Yup
-            .string()
-            .email()
-            .required(),
+        // email: Yup
+        //     .string()
+        //     .email()
+        //     .required(),
         password: Yup
             .string()
             .min(8)
@@ -70,12 +70,12 @@ const FormikUserForm = withFormik({
             .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
                 console.log(res);
-                props.history.push("/login")
+                // props.history.push("/login")
             })
             .catch(err => {
                 console.log(err.response)
             })
-            .finally(resetForm())
+            .finally(resetForm)
     }
 })(RegistrationForm);
 
