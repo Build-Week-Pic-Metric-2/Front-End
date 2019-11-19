@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import api from "../helpers/api"
+// import api from "../helpers/api"
 import collage from "./images/piccollage.jpg"
 import photo from "./images/takingPhoto.jpg"
 
@@ -37,7 +37,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
                     <p>You have successfully created an account under ${users.username} and can log in.</p>
                 </div>
             ))}
-            <img src={photo}  width= "400" height= "350" className="photo" alt="Person taking photo" />
+            <img src={photo}  width= "400" height= "350" className="photo" alt="Person taking pic" />
         </div>
     );
 };
@@ -55,11 +55,12 @@ const FormikUserForm = withFormik({
             .string()
             .max(15)
             .required(),
-        
-        password: Yup
-            .string()
-            .min(8)
-            .required(),
+
+        // email: Yup
+        //     .string()
+        //     .email()
+        //     .required(),
+
         tos: Yup.bool().oneOf([true], `You Must Agree to the ToS.`)
     }),
     handleSubmit(props, { username, password }, {resetForm}){
