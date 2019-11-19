@@ -7,7 +7,7 @@ import collage from "./images/piccollage.jpg"
 import photo from "./images/takingPhoto.jpg"
 
 
-const RegistrationForm = ({ values, errors, touched, status }) => {    
+const RegistrationForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
     useEffect(()=>{
         status && setUser(user => [...user, status])
@@ -65,17 +65,16 @@ const FormikUserForm = withFormik({
             .required(),
         tos: Yup.bool().oneOf([true], `You Must Agree to the ToS.`)
     }),
-    handleSubmit({ username, password }, {resetForm}){
+    handleSubmit({ username, password, props}){
         axios
             .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
                 console.log(res);
-                // props.history.push("/login")
+                props.history.push("/login")
             })
             .catch(err => {
                 console.log(err.response)
             })
-            .finally(resetForm)
     }
 })(RegistrationForm);
 
