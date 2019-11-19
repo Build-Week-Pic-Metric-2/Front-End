@@ -5,7 +5,7 @@ import {withFormik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const RegistrationForm = ({username, password, confirmPassword, errors, touched,handleChange, setFieldTouched}) =>{
+const RegistrationForm = ({username, password, confirmPassword, errors, touched,handleChange, setFieldTouched, isValid}) =>{
         const change = (username, e) => {
             e.preventDefault();
             handleChange(e);
@@ -53,7 +53,7 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     type="submit"
                     fullWidth
                     variant="contained"
-                    // disabled={!isValid}
+                    disabled={!isValid}
                 >
                     Submit
                 </Button>

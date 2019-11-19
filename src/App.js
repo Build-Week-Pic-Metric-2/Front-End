@@ -20,8 +20,8 @@ export default function App() {
 
        <Nav />
         <Route exact path="/" component={WelcomePage}/>
-        <Route path="/register" component={Register}/>
-        <Route path="/alternate" component={Form} />
+        <Route path="/original" component={Register}/>
+        <Route path="/register" component={Form} />
         <Route exact path="/login" component={Login} />
         <ProtectedRoute exact path="/account" component={Account}/>
         <ProtectedRoute exact path='/logout' component={Logout} />
