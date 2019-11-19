@@ -43,6 +43,15 @@
   padding: 2%;
   border-radius: 1%;
 }
+.container {
+  width: 400px;
+  height: auto;
+  padding: 5%;
+  margin: 5%;
+  border-radius: 5px;
+  border: 2px solid sienna;
+  background: #d698b9;
+}
 .user-form {
   display: flex;
   justify-content: center;

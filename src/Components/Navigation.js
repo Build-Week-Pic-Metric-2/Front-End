@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+// import { NavLink, Link } from 'react-router-dom';
 import {getToken} from "../helpers/api";
 import styled from 'styled-components';
 
@@ -27,12 +27,12 @@ function Nav() {
 
   return (
   <Row>
-    <Button href='/' className='button1' styled='text-decoration:none'><NavLink className="link" to="/">Home</NavLink></Button>
+    <Button href='/' className='button1' styled='text-decoration:none' to="/">Home</Button>
 
-    <Button href='/register'> <NavLink className="link" to="/register">Register</NavLink> </Button>
-        {!signedIn && <Button href='login'> <Link className="link" to="/login">Login</Link></Button>}
-         {signedIn && <Button href='/account'><Link className="link" to="/account">Account</Link></Button>}
-         {signedIn && <Button href='/logout'> <Link className="link" to="/logout">Logout</Link></Button>}
+    <Button href='/register' className="link">Register</Button>
+        {!signedIn && <Button href='login' className="link">Login</Button>}
+         {signedIn && <Button href='/account' className="link">Account</Button>}
+         {signedIn && <Button href='/logout'  className="link">Logout</Button>}
   </Row>
   )
 }
