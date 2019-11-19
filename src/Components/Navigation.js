@@ -2,7 +2,7 @@ import React from 'react';
 import { Row } from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
 import {getToken} from "../helpers/api";
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const Button = styled.a`
   display: inline-block;
@@ -15,16 +15,10 @@ const Button = styled.a`
   border: 2px solid white;
   text-align: center;
   font-size: 1.5rem;
-    text-decoration: none;
+  text-decoration: none;
   :hover{
   background: lightgrey;
-  },
-  
-  ${props =>
-    props.primary && css`
-      background: white;
-      color: black;
-    `};  
+  }, 
 `;
 
 function Nav() {
@@ -33,7 +27,7 @@ function Nav() {
 
   return (
   <Row>
-    <Button href='/' primary styled='text-decoration:none'><NavLink className="link" to="/">Home</NavLink></Button>
+    <Button href='/' className='button1' styled='text-decoration:none'><NavLink className="link" to="/">Home</NavLink></Button>
 
     <Button href='/register'> <NavLink className="link" to="/register">Register</NavLink> </Button>
         {!signedIn && <Button href='login'> <Link className="link" to="/login">Login</Link></Button>}
