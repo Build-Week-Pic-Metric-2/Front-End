@@ -18,8 +18,6 @@ export default function App() {
         {/*<Header />*/}
 
        <Nav />
-
-
         <Route exact path="/" component={WelcomePage}/>
         <Route path="/register" component={Register}/>
         <Route exact path="/login" component={Login} />
