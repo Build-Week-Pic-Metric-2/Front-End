@@ -7,7 +7,7 @@ import axios from "axios";
 
 const RegistrationForm = ({username, password, confirmPassword, errors, touched,handleChange, setFieldTouched, isValid}) =>{
         const change = (username, e) => {
-            e.preventDefault();
+            e.persist();
             handleChange(e);
             setFieldTouched(username, true, false);
         };
@@ -19,7 +19,7 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     name="username"
                     helperText={touched.username ? errors.username : ""}
                     error={touched.username && Boolean(errors.username)}
-                    label="username"
+                    label="Username"
                     value={username}
                     onChange={change.bind(null, "username")}
                     fullWidth
@@ -55,7 +55,7 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     variant="contained"
                     disabled={!isValid}
                 >
-                    Submit
+                    Create Account
                 </Button>
             </Form>
         );
