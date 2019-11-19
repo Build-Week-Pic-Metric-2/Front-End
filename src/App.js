@@ -9,6 +9,7 @@ import Nav from "./Components/Navigation"
 // import Header from './Components/Header'
 import WelcomePage from './Components/WelcomePage'
 import Register from './Components/Register'
+import Form from './Components/AltForm/form'
 
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
        <Nav />
         <Route exact path="/" component={WelcomePage}/>
         <Route path="/register" component={Register}/>
+        <Route path="/alternate" component={Form} />
         <Route exact path="/login" component={Login} />
         <ProtectedRoute exact path="/account" component={Account}/>
         <ProtectedRoute exact path='/logout' component={Logout} />
