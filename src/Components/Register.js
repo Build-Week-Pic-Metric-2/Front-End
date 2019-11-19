@@ -15,8 +15,10 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
 
     return (
         <div className="user-form">
+
             <img src={collage} width= "400" height ="350" className="collage" alt="Pic Collage"/>
             <Form className='form'> 
+
                 <h1 className="reg-h1">Create an account to get started!</h1>
                 <div className="field-error">
                     <Field className='form-field' type="text" name="username" placeholder="Username"/>
