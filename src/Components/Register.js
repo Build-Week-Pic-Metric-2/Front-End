@@ -30,7 +30,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
                     <p className='form-field tos'><Field type="checkbox" name="tos" checked={values.tos}/>Terms of Service</p>
                     {touched.tos && errors.tos && (<p className='error'>{errors.tos}</p>)}
                 </div>
-                <button className="reg-btn" type="submit">Create Account</button>
+                <button className="reg-btn">Create Account</button>
             </Form>
             {user.map(users => (
                 <div>
@@ -55,27 +55,24 @@ const FormikUserForm = withFormik({
             .string()
             .max(15)
             .required(),
-        email: Yup
-            .string()
-            .email()
-            .required(),
+        
         password: Yup
             .string()
             .min(8)
             .required(),
         tos: Yup.bool().oneOf([true], `You Must Agree to the ToS.`)
     }),
-    handleSubmit({ username, password }, {resetForm}){
+    handleSubmit(props, { username, password }, {resetForm}){
         axios
             .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
                 console.log(res);
-                props.history.push("/login")
+                // props.history.push("/login")
             })
             .catch(err => {
                 console.log(err.response)
             })
-            .finally(resetForm())
+            .finally(resetForm)
     }
 })(RegistrationForm);
 
