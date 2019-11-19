@@ -19,13 +19,14 @@ const handleChange = e =>{
 const handleSubmit = e => {
     e.preventDefault();
     api()
-    .post("/login", data)
+    .post("api/auth/login", data)
     .then(response => {
+        console.log(response);
         localStorage.setItem("token", response.data.payload)
         props.history.push('/account')
     })
     .catch(error => {
-        setError(error.response.data.message)
+        setError(error.response)
     })
 }
 

@@ -8,7 +8,7 @@ export function getToken() {
 export default function() {
    return axios
     .create ({
-        baseURL: 'https://picmetric1.herokuapp.com/api/auth',
+        baseURL: 'https://picmetric1.herokuapp.com/',
         headers: {
             Authorization: getToken()
         }

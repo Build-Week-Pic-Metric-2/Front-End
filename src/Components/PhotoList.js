@@ -5,7 +5,7 @@ import {fetchPics} from "../actions/actions"
 
 
 const PhotoList = () => {
-    const state = useSelector(state => state)
+    const state = useSelector(state => state);    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const PhotoList = () => {
     })       
     return (
         <div className="photoContainer">
-            <h3>{state.pic.title}</h3>
+            {/* <h3>{state.pic.title}</h3> */}
 
         </div>
     )
