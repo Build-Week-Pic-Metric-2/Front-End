@@ -53,7 +53,6 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     type="submit"
                     fullWidth
                     variant="contained"
-                    styled={ `margin: 2% 0;` }
                     // disabled={!isValid}
                 >
                     Submit
