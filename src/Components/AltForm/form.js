@@ -53,7 +53,7 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     type="submit"
                     fullWidth
                     variant="contained"
-                    className='alt-button'
+                    styled={ `margin: 2% 0;` }
                     // disabled={!isValid}
                 >
                     Submit
@@ -73,8 +73,8 @@ const FormikUserForm = withFormik({
 
     validationSchema: Yup.object().shape({
         username: Yup
-            .string("Enter a username")
-            .required("Name is required"),
+            .string("Enter a Username")
+            .required("Username is required"),
         password: Yup
             .string()
             .min(8, "Password must contain at least 8 characters")

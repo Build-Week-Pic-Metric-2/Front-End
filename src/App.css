@@ -51,6 +51,7 @@
   border-radius: 5px;
   border: 2px solid sienna;
   background: #d698b9;
+  line-height: 3;
 }
 .user-form {
   display: flex;
@@ -87,4 +88,8 @@
 }
 .button1{
   background: white;
+}
+
+.alt-button{
+  margin: 3% 0;
 }
