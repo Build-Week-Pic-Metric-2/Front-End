@@ -37,10 +37,11 @@
 .form {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  border: 1px solid sienna;
   width: 380px;
   height: 200px;
   padding: 2%;
+  border-radius: 1%;
 }
 .user-form {
   display: flex;
@@ -70,4 +71,8 @@
 }
 .reg-h1{
   margin: 0 0 4% 0;
+}
+.link {
+  text-decoration: none;
+  color: black;
 }
