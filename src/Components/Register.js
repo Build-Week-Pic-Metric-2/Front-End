@@ -6,7 +6,12 @@ import collage from "./images/piccollage.jpg"
 import photo from "./images/takingPhoto.jpg"
 
 
+const RegistrationForm = ({ values, errors, touched, status }) => {
+    const [user, setUser] = useState([]);
+    useEffect(()=>{
+        status && setUser(user => [...user, status])
     },[status]);
+
     return (
         <div className="user-form">
             <img src={collage} width= "400" height ="350" className="collage" alt="Pic Collage"/>

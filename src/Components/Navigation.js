@@ -2,24 +2,24 @@ import React from 'react';
 import { Row } from 'reactstrap';
 // import { NavLink, Link } from 'react-router-dom';
 import {getToken} from "../helpers/api";
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const Button = styled.a`
-  display: inline-block;
-  border-radius: 3px;
-  padding: .5rem 0;
-  margin: .5rem 1rem;
-  width: 10rem;
-  background: transparent;
-  color: white;
-  border: 2px solid white;
-  text-align: center;
-  font-size: 1.5rem;
-  text-decoration: none;
-  :hover{
-  background: lightgrey;
-  }, 
-`;
+// const Button = styled.a`
+//   display: inline-block;
+//   border-radius: 3px;
+//   padding: .5rem 0;
+//   margin: .5rem 1rem;
+//   width: 10rem;
+//   background: transparent;
+//   color: white;
+//   border: 2px solid white;
+//   text-align: center;
+//   font-size: 1.5rem;
+//   text-decoration: none;
+//   :hover{
+//   background: lightgrey;
+//   }, 
+// `;
 
 function Nav() {
 
