@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import api from "../helpers/api"
+import collage from "./images/piccollage.jpg"
+import photo from "./images/takingPhoto.jpg"
+
 
 const RegistrationForm = ({ values, errors, touched, status }) => {    
     const [user, setUser] = useState([]);
@@ -11,15 +15,12 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
 
     return (
         <div className="user-form">
+            <img src={collage} width= "400" height ="350" className="collage" alt="Pic Collage"/>
             <Form className='form'>
                 <h1 className="reg-h1">Create an account to get started!</h1>
                 <div className="field-error">
                     <Field className='form-field' type="text" name="username" placeholder="Username"/>
                     {touched.username && errors.username && (<p className='error'>{errors.username}</p>)}
-                </div>
-                <div className="field-error">
-                    <Field className='form-field' type="text" name="email" placeholder="user@email.com"/>
-                    {touched.email && errors.email && (<p className='error'>{errors.email}</p>)}
                 </div>
                 <div className="field-error">
                     <Field className='form-field' type="text" name="password" placeholder="password"/>
@@ -29,22 +30,22 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
                     <p className='form-field tos'><Field type="checkbox" name="tos" checked={values.tos}/>Terms of Service</p>
                     {touched.tos && errors.tos && (<p className='error'>{errors.tos}</p>)}
                 </div>
-                <button className="reg-btn">Create Account</button>
+                <button className="reg-btn" type="submit">Create Account</button>
             </Form>
             {user.map(users => (
                 <div>
                     <p>You have successfully created an account under ${users.username} and can log in.</p>
                 </div>
             ))}
+            <img src={photo}  width= "400" height= "350" className="photo" alt="Person taking photo" />
         </div>
     );
 };
 
 const FormikUserForm = withFormik({
-    mapPropsToValues({username, email, password, tos}){
+    mapPropsToValues({username, password, tos}){
         return{
             username: username || "",
-            email: email || "",
             password: password || "",
             tos: tos || false,
         }
@@ -69,6 +70,7 @@ const FormikUserForm = withFormik({
             .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
                 console.log(res);
+                props.history.push("/login")
             })
             .catch(err => {
                 console.log(err.response)
