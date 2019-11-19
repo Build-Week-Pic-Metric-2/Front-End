@@ -1,11 +1,25 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
   height: 40vmin;
 }
+.form{
+  background: #d698b9;
+  margin-top: 10%;
+}
 
+.collage{
+ margin-right: 5%;
+ 
+}
+
+.photo{
+  margin-left: 5%;
+ margin-top: 25%;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
