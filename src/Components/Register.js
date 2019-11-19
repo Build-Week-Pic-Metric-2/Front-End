@@ -15,10 +15,8 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
 
     return (
         <div className="user-form">
-
             <img src={collage} width= "400" height ="350" className="collage" alt="Pic Collage"/>
-            <Form className='form'> 
-
+            <Form className='form'>
                 <h1 className="reg-h1">Create an account to get started!</h1>
                 <div className="field-error">
                     <Field className='form-field' type="text" name="username" placeholder="Username"/>
@@ -67,12 +65,10 @@ const FormikUserForm = withFormik({
             .required(),
         tos: Yup.bool().oneOf([true], `You Must Agree to the ToS.`)
     }),
-    handleSubmit(values, props, {setStatus, resetForm}){
-        
-        api()
-            .post("/register", values)
+    handleSubmit({ username, password }, {resetForm}){
+        axios
+            .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
-                setStatus(res.data);
                 console.log(res);
                 props.history.push("/login")
             })
