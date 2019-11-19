@@ -5,7 +5,10 @@ export const initialState = {
     isLoading: false,
     error: null,
     isDeleting: false,
-    user: []
+    user: [{
+        username: "",
+        password: ""
+    }]
 
 }
  export function reducer(state=initialState, action){

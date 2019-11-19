@@ -19,7 +19,7 @@ export default function App() {
 
        <Nav />
         <Route exact path="/" component={WelcomePage}/>
-        <Route path="/register" component={Register}/>
+        <Route path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <ProtectedRoute exact path="/account" component={Account}/>
         <ProtectedRoute exact path='/logout' component={Logout} />

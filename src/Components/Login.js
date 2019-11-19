@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+
 import api from "../helpers/api";
+
 
 
 const Login = (props) => {
@@ -8,13 +10,12 @@ const Login = (props) => {
         username: "",
         password: ""
     });
-
-
-const handleChange = e =>{
+    
+    const handleChange = e =>{
     setData({
-        ...data,
+        ...data,       
         [e.target.name]: e.target.value
-    })
+    })  
 }
 const handleSubmit = e => {
     e.preventDefault();
@@ -22,7 +23,8 @@ const handleSubmit = e => {
     .post("api/auth/login", data)
     .then(response => {
         console.log(response);
-        localStorage.setItem("token", response.data.payload)
+        sessionStorage.setItem("username", response.data.username);
+        localStorage.setItem("token", response.data.id)
         props.history.push('/account')
     })
     .catch(error => {

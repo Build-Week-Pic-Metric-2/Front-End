@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 import {fetchPics} from "../actions/actions"
+import Photocard from "./Photocard"
 
 
 
@@ -12,10 +13,7 @@ const PhotoList = () => {
         dispatch(fetchPics)
     })       
     return (
-        <div className="photoContainer">
-            {/* <h3>{state.pic.title}</h3> */}
-
-        </div>
+        <Photocard />
     )
 }
 export default PhotoList;
