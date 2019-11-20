@@ -4,10 +4,13 @@ import {useSelector, useDispatch} from "react-redux";
 import api from "../helpers/api"
 import { editPic } from '../actions/actions';
 import collage from "./images/piccollage.jpg"
+import unsplash from "../helpers/unsplash"
 
 const EditPic = (props) => {
+    console.log("EditPic",props)
     const state = useSelector(state => state);
     const dispatch = useDispatch();
+    const [image, setImage] = useState();
     const [pic, setPic] = useState({        
         ...state.pics
         // title:"",
@@ -15,42 +18,52 @@ const EditPic = (props) => {
         // image:[]
     });
 
+    const id = props.match.params.id;
     useEffect(() => {
-        api()
-        .get(`/api/photos/1/${props.match.params.id}`)
+        console.log(id)
+        unsplash()
+        .get(`/photos/${id}`)
         .then(response => {
+            console.log(response)
             setPic(response.data)
+            setImage(response.data.urls.small)
         })
         .catch(error => {
             console.log(error)
         })            
-    }, [props.match.params.id, state])
+    }, [id, props.match.params.id])
 
     const handleChange = event => {
-        setPic({
+        setPic([
             ...state.pics,
-            [event.target.name]: event.target.value
-        })
+            {[event.target.name]: event.target.value}
+        ])
     }
 
     const handleSubmit = event => {
         event.preventDefault();
         dispatch(editPic(pic));        
     }
-    console.log(pic)
-
+    console.log("pic",pic)
+    console.log("state", state)
+    console.log("images", image)
+    
     return(
         <div className="update-form">
-        <div className="edit-pic">
-            <h1>Update Pic Info</h1>
+             <h1>Update Pic Info</h1>
+            
+        <div className="edit-pic">      
             <form onSubmit={handleSubmit}>
-                <label> Title: <input type="text" name="title" placehold="Movie Title" value={state.pics.title} onChange={handleChange}/></label>
-                <label>Description: <input type="text" name="director" placehold="Movie Director" value={state.pics.description} onChange={handleChange}/></label>
-                <img src={collage} width="400" alt={state.pics.description} />
-                <button className="update-save" type="submit">Save</button>
-               
+                {pic && pic.length > 0 ? 
+                pic.tag.map(pic=>{
+                return <label> Title: <input type="text" name="title" placehold="Movie Title" value={pic.title} onChange={handleChange}/></label>}):null}
+                <label>Description: <input type="text" name="director" placehold="Movie Director" value={pic.description} onChange={handleChange}/></label>
+                <img src={image} width="400" alt={state.pics.description} /> 
+                <button className="update-save" type="submit">Save</button>     
+                }          
             </form>
         </div>
+        
         </div>
     )
 

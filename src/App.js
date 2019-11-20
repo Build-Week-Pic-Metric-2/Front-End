@@ -23,10 +23,12 @@ export default function App() {
         <Route exact path="/" component={WelcomePage}/>
         <Route path="/register" component={Register}/>
         {/* <Route path="/alternate" component={Form} /> */}
-        <Route path="/login" component={Login} />
-        <ProtectedRoute exact path="/account" component={Account}/>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/account" render ={props => (
+         <Account {...props}/>
+        )}/>
         <ProtectedRoute exact path='/logout' component={Logout} />
-        <ProtectedRoute exact path='/edit-pic' component={EditPic} />
+        <ProtectedRoute exact path='/edit-pic/:id' component={EditPic} />
 
       </section>
   )
