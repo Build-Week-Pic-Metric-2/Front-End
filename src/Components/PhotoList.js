@@ -4,7 +4,8 @@ import {fetchPics} from "../actions/actions"
 import {Link} from "react-router-dom";
 import {deletePic} from "../actions/actions"
 
-const PhotoList = () => {
+const PhotoList = (props) => {
+    console.log('photolist', props)
     const state = useSelector(state => state);    
     const dispatch = useDispatch();
 
@@ -12,6 +13,7 @@ const PhotoList = () => {
     useEffect(() => {
         
         dispatch(fetchPics())
+       
     }, [dispatch])      
 
     return (
@@ -24,9 +26,9 @@ const PhotoList = () => {
             <img src={image.urls.small} alt=""/>
         
 
-            <Link to={`/edit-pic/${state.pics.id}`}>Edit Photo</Link>
+            <Link to={`/edit-pic/${image.id}`}>Edit Photo</Link>
             
-            <button className="delete" onClick={()=>{dispatch(deletePic(state.pics.id))}}>Delete Photo</button>
+            <button className="delete" onClick={()=>{dispatch(deletePic(image.id))}}>Delete Photo</button>
     </div>
               )}
         ) : null
