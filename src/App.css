@@ -77,11 +77,16 @@
 .container {
   width: 400px;
   height: auto;
-  padding: 5%;
+  padding: 1%;
   margin: 5%;
   border-radius: 5px;
   border: 2px solid sienna;
   background: #d698b9;
+  line-height: 3;
+}
+.login{
+  display: flex;
+  flex-direction: column;
 }
 .user-form {
   display: flex;
@@ -118,4 +123,8 @@
 }
 .button1{
   background: white;
+}
+
+.alt-button{
+  margin: 3% 0;
 }

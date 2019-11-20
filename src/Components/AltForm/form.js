@@ -5,21 +5,21 @@ import {withFormik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const RegistrationForm = ({username, password, confirmPassword, errors, touched,handleChange, setFieldTouched}) =>{
+const RegistrationForm = ({username, password, confirmPassword, errors, touched,handleChange, setFieldTouched, isValid}) =>{
         const change = (username, e) => {
-            e.preventDefault();
+            e.persist();
             handleChange(e);
             setFieldTouched(username, true, false);
         };
         return (
-            <Form className="container">
+            <Form className="container login">
                 <h1>Create an account!</h1>
                 <TextField
                     id="username"
                     name="username"
                     helperText={touched.username ? errors.username : ""}
                     error={touched.username && Boolean(errors.username)}
-                    label="username"
+                    label="Username"
                     value={username}
                     onChange={change.bind(null, "username")}
                     fullWidth
@@ -53,10 +53,9 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     type="submit"
                     fullWidth
                     variant="contained"
-                    className='alt-button'
-                    // disabled={!isValid}
+                    disabled={!isValid}
                 >
-                    Submit
+                    Create Account
                 </Button>
             </Form>
         );
@@ -73,8 +72,8 @@ const FormikUserForm = withFormik({
 
     validationSchema: Yup.object().shape({
         username: Yup
-            .string("Enter a username")
-            .required("Name is required"),
+            .string("Enter a Username")
+            .required("Username is required"),
         password: Yup
             .string()
             .min(8, "Password must contain at least 8 characters")
