@@ -52,14 +52,13 @@ export const postPics = ({title, description, image}) => {
             dispatch({type: POST_USERPICS_FAILURE, payload: error});
         });
     };
-
 }
 
-export const editPics = (id, data) => {
+export const editPic = (id, data) => {
     return dispatch => {
         dispatch({type: EDIT_USERPICS_START});
         api()
-        .put("/api/photos/1", data)
+        .put(`/api/photos/1/${id}`, data)
         .then(response => {
             dispatch({type: EDIT_USERPICS_SUCCESS, payload: response.data});
             dispatch(fetchPics());
@@ -68,14 +67,13 @@ export const editPics = (id, data) => {
             dispatch({tupe: EDIT_USERPICS_FAILURE, payload: error});
         });
     };
-
 }
 
-export const deletePics = (id) => {
+export const deletePic = (id) => {
     return dispatch => {
         dispatch({type: DELETE_USERPICS_START});
         api()
-        .delete("/api/photos/1")
+        .delete(`/api/photos/1/${id}`)
         .then(response => {
             dispatch({type: DELETE_USERPICS_SUCCESS, payload: response.data});
             dispatch(fetchPics());
@@ -84,6 +82,5 @@ export const deletePics = (id) => {
             dispatch({tupe: DELETE_USERPICS_FAILURE, payload: error});
         });
     };
-
 }
 
