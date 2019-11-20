@@ -12,7 +12,7 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
             setFieldTouched(username, true, false);
         };
         return (
-            <Form className="container">
+            <Form className="container login">
                 <h1>Create an account!</h1>
                 <TextField
                     id="username"

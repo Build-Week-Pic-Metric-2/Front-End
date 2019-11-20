@@ -29,7 +29,7 @@ function Nav() {
   <Row>
     <Button href='/' className='button1' styled='text-decoration:none' to="/">Home</Button>
 
-    <Button href='/register' className="link">Register</Button>
+    <Button href='/register' className="link">Sign Up</Button>
         {!signedIn && <Button href='login' className="link">Login</Button>}
          {signedIn && <Button href='/account' className="link">Account</Button>}
          {signedIn && <Button href='/logout'  className="link">Logout</Button>}

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import api from "../helpers/api";
+import Button from '@material-ui/core/Button';
+import TextField from "@material-ui/core/TextField";
 
 
 const Login = (props) => {
@@ -31,13 +33,13 @@ const handleSubmit = e => {
 }
 
 return(
-    <form onSubmit={handleSubmit}>
+    <form className="container" onSubmit={handleSubmit}>
         <h2>Please Login</h2>
         <div className="login">
         {error && <div className="error">{error}</div>}
-        <input type="text" name='username' placeholder="User Name" value={data.username} onChange={handleChange}/>
-        <input type='password' name='password' placeholder='password' value={data.password} onChange={handleChange}/>
-        <button className="button" type="submit">Sign In</button>
+        <TextField type="text" name='username' placeholder="User Name" value={data.username} onChange={handleChange}/>
+        <TextField type='password' name='password' placeholder='password' value={data.password} onChange={handleChange}/>
+        <Button className="button" type="submit">Sign In</Button>
         </div>
     </form>
 )

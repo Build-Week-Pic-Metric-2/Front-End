@@ -53,6 +53,10 @@
   background: #d698b9;
   line-height: 3;
 }
+.login{
+  display: flex;
+  flex-direction: column;
+}
 .user-form {
   display: flex;
   justify-content: center;
