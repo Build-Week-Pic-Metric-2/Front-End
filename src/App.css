@@ -61,6 +61,9 @@
 .edit-pic label{
   padding-bottom:5%;
 }
+.edit-pic button {
+  margin-top: 10%;
+}
 
 .form {
   display: flex;

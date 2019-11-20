@@ -12,7 +12,8 @@ return(
     <div className="image-container">
         <h2>{state.pics.title}</h2>
         <p>{state.pics.description}</p>
-        <img src="" alt=""/>
+        <img src={state.pics} alt=""/>
+       
 
         <Link to={`/edit-pic/${state.pics.id}`}>Edit Photo</Link>
         

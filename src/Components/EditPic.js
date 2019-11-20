@@ -1,17 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
+
 import {useSelector, useDispatch} from "react-redux";
 import api from "../helpers/api"
-import { fetchPics } from '../actions/actions';
+import { editPic } from '../actions/actions';
+import collage from "./images/piccollage.jpg"
 
 const EditPic = (props) => {
     const state = useSelector(state => state);
     const dispatch = useDispatch();
-    const [pic, setPic] = useState({
-        ...state,
-        title:"",
-        description: "",
-        image:[]
+    const [pic, setPic] = useState({        
+        ...state.pics
+        // title:"",
+        // description: "",
+        // image:[]
     });
 
     useEffect(() => {
@@ -23,19 +24,20 @@ const EditPic = (props) => {
         .catch(error => {
             console.log(error)
         })            
-    }, [props.match.params.id])
+    }, [props.match.params.id, state])
 
     const handleChange = event => {
         setPic({
-            ...pic,
+            ...state.pics,
             [event.target.name]: event.target.value
         })
     }
 
     const handleSubmit = event => {
         event.preventDefault();
-        dispatch(fetchPics());        
+        dispatch(editPic(pic));        
     }
+    console.log(pic)
 
     return(
         <div className="update-form">
@@ -44,7 +46,7 @@ const EditPic = (props) => {
             <form onSubmit={handleSubmit}>
                 <label> Title: <input type="text" name="title" placehold="Movie Title" value={state.pics.title} onChange={handleChange}/></label>
                 <label>Description: <input type="text" name="director" placehold="Movie Director" value={state.pics.description} onChange={handleChange}/></label>
-                <img src={state.image} alt={state.pics.description} />
+                <img src={collage} width="400" alt={state.pics.description} />
                 <button className="update-save" type="submit">Save</button>
                
             </form>

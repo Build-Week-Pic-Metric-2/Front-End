@@ -1,20 +1,33 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 import {fetchPics} from "../actions/actions"
-import Photocard from "./Photocard"
+import {Link} from "react-router-dom";
+import {deletePic} from "../actions/actions"
 
 const PhotoList = () => {
     const state = useSelector(state => state);    
     const dispatch = useDispatch();
 
+
     useEffect(() => {
-        dispatch(fetchPics)
-    })      
+        
+        dispatch(fetchPics())
+    }, [dispatch])      
 
     return (
-        state.pic && state.pic.length ? state.pic.map(image => {
-            return(
-        <Photocard />
+        state.pics && state.pics.length ? state.pics.map(image => {
+            
+        return(
+            <div className="image-container">
+            <h2>{image.title}</h2>
+            <p>{image.description}</p>
+            <img src={image.urls.small} alt=""/>
+        
+
+            <Link to={`/edit-pic/${state.pics.id}`}>Edit Photo</Link>
+            
+            <button className="delete" onClick={()=>{dispatch(deletePic(state.pics.id))}}>Delete Photo</button>
+    </div>
               )}
         ) : null
     )    
