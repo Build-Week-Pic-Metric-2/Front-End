@@ -21,6 +21,7 @@ export const fetchPics=() =>{
         unsplash()
         .get("users/jchartier/photos")
         .then(response => {
+            console.log("response", response)
             dispatch({type: FETCH_USERPICS_SUCCESS, payload: response.data});
         })
         .catch(error => {
@@ -59,8 +60,8 @@ export const postPics = ({title, description, image}) => {
 export const editPic = (id, data) => {
     return dispatch => {
         dispatch({type: EDIT_USERPICS_START});
-        api()
-        .put(`/photos/${id}`)
+        unsplash()
+        .put(`/photos/${id}`, data)
             // ` /api/photos/1/${id}`, data)
         .then(response => {
             dispatch({type: EDIT_USERPICS_SUCCESS, payload: response.data});

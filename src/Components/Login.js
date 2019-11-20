@@ -38,7 +38,7 @@ return(
     <form className="container" onSubmit={handleSubmit}>
         <h2>Please Login</h2>
         <div className="login">
-        {error && <div className="error">{error}</div>}
+        {/* {error && <div className="error">{error}</div>} */}
         <TextField type="text" name='username' placeholder="User Name" value={data.username} onChange={handleChange}/>
         <TextField type='password' name='password' placeholder='password' value={data.password} onChange={handleChange}/>
         <Button className="button" type="submit">Sign In</Button>

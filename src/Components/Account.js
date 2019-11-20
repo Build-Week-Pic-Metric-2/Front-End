@@ -6,7 +6,8 @@ import PhotoList from "./PhotoList"
 import { postPics } from '../actions/actions';
 
 
-const Account = () =>{
+const Account = (props) =>{
+  console.log("Account",props)
 
     const state = useSelector(state => state);
     const [newPhoto, setNewPhoto]=useState({      
@@ -14,8 +15,7 @@ const Account = () =>{
       description: '',
     });
     const [images, setImages] = useState([])
-    const dispatch = useDispatch();
-    console.log("Account", state)
+    const dispatch = useDispatch();    
     const username = sessionStorage.getItem("username")
 
     const handleChange = (e) => {
@@ -53,7 +53,7 @@ const Account = () =>{
         maxFileSize={5242880}
         />         
         <button type="submit" onClick={handleUpload} name="image">Upload Image</button>    
-        <PhotoList />
+        <PhotoList props={props}/>
         </div>
              
       </div>
