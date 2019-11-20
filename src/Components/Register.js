@@ -78,9 +78,11 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import {withFormik, Form } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+// import axios from "axios";
+import api from "../helpers/api";
 
-const RegistrationForm = ({username, password, confirmPassword, errors, touched,handleChange, setFieldTouched}) =>{
+
+const RegistrationForm = ({username, password, confirmPassword, errors, touched, handleChange, setFieldTouched}) =>{
         const change = (username, e) => {
             e.preventDefault();
             handleChange(e);
@@ -94,7 +96,7 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     name="username"
                     helperText={touched.username ? errors.username : ""}
                     error={touched.username && Boolean(errors.username)}
-                    label="username"
+                    label="Username"
                     value={username}
                     onChange={change.bind(null, "username")}
                     fullWidth
@@ -112,7 +114,7 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     onChange={change.bind(null, "password")}
 
                 />
-                <TextField
+                <TextField style={{marginBottom: '2%'}}
                     id="confirmPassword"
                     name="confirmPassword"
                     helperText={touched.confirmPassword ? errors.confirmPassword : ""}
@@ -131,18 +133,18 @@ const RegistrationForm = ({username, password, confirmPassword, errors, touched,
                     className='alt-button'
                     // disabled={!isValid}
                 >
-                    Submit
+                    Create Account
                 </Button>
             </Form>
         );
 };
 
 const FormikUserForm = withFormik({
-    mapPropsToValues({username, password, tos}) {
+    mapPropsToValues({username, password, confirmPassword}) {
         return {
             username: username || "",
             password: password || "",
-            tos: tos || false,
+            confirmPassword: confirmPassword || ""
     }
     },
 
@@ -160,8 +162,8 @@ const FormikUserForm = withFormik({
             .oneOf([Yup.ref("password")], "Password does not match")
     }),
     handleSubmit({ username, password, props}){
-        axios
-            .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
+        api()
+            .post("api/auth/register", {username, password})
             .then(res =>{
                 console.log(res);
                 props.history.push("/login")

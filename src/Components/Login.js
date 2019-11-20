@@ -4,8 +4,6 @@ import api from "../helpers/api";
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 
-
-
 const Login = (props) => {
     const [error, setError] = useState();
     const [data, setData] = useState({
@@ -36,12 +34,12 @@ const handleSubmit = e => {
 
 return(
     <form className="container" onSubmit={handleSubmit}>
-        <h2>Please Login</h2>
+        <h2>Please Sign In!</h2>
         <div className="login">
-        {error && <div className="error">{error}</div>}
-        <TextField type="text" name='username' placeholder="User Name" value={data.username} onChange={handleChange}/>
-        <TextField type='password' name='password' placeholder='password' value={data.password} onChange={handleChange}/>
-        <Button className="button" type="submit">Sign In</Button>
+            {error && <div className="error">{error}</div>}
+            <TextField style={{marginBottom: '2%'}} type="text" name='username' placeholder="User Name" value={data.username} onChange={handleChange}/>
+            <TextField style={{marginBottom: '2%'}} type='password' name='password' placeholder='password' value={data.password} onChange={handleChange}/>
+            <Button variant="contained" className="alt-button" type="submit">Sign In</Button>
         </div>
     </form>
 )

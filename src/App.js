@@ -9,21 +9,21 @@ import Nav from "./Components/Navigation"
 // import Header from './Components/Header'
 import WelcomePage from './Components/WelcomePage'
 import Register from './Components/Register'
-import Form from './Components/AltForm/form'
+// import Form from './Components/AltForm/form'
 import EditPic from "./Components/EditPic"
 
 
 export default function App() {
 
   return (
-      <section>
+      <section className='main'>
         {/*<Header />*/}
 
        <Nav />
         <Route exact path="/" component={WelcomePage}/>
         <Route path="/register" component={Register}/>
         {/* <Route path="/alternate" component={Form} /> */}
-        <Route exact path="/login" component={Login} />
+        <Route path="/login" component={Login} />
         <ProtectedRoute exact path="/account" component={Account}/>
         <ProtectedRoute exact path='/logout' component={Logout} />
         <ProtectedRoute exact path='/edit-pic' component={EditPic} />
