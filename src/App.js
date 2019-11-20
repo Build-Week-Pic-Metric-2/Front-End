@@ -9,14 +9,14 @@ import Nav from "./Components/Navigation"
 // import Header from './Components/Header'
 import WelcomePage from './Components/WelcomePage'
 import Register from './Components/Register'
-import Form from './Components/AltForm/form'
+// import Form from './Components/AltForm/form'
 import EditPic from "./Components/EditPic"
 
 
 export default function App() {
 
   return (
-      <section>
+      <section className='main'>
         {/*<Header />*/}
 
        <Nav />
