@@ -10,6 +10,7 @@ import Nav from "./Components/Navigation"
 import WelcomePage from './Components/WelcomePage'
 import Register from './Components/Register'
 import Form from './Components/AltForm/form'
+import EditPic from "./Components/EditPic"
 
 
 export default function App() {
@@ -20,11 +21,12 @@ export default function App() {
 
        <Nav />
         <Route exact path="/" component={WelcomePage}/>
-        <Route path="/original" component={Register}/>
-        <Route path="/register" component={Form} />
+        <Route path="/register" component={Register}/>
+        {/* <Route path="/alternate" component={Form} /> */}
         <Route exact path="/login" component={Login} />
         <ProtectedRoute exact path="/account" component={Account}/>
         <ProtectedRoute exact path='/logout' component={Logout} />
+        <ProtectedRoute exact path='/edit-pic' component={EditPic} />
 
       </section>
   )

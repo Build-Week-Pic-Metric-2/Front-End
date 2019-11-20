@@ -1,4 +1,5 @@
 import api from "../helpers/api"
+import unsplash from "../helpers/unsplash"
 
 export const FETCH_USERPICS_START = "FETCH_USERPICS_START";
 export const FETCH_USERPICS_SUCCESS = "FETCH_USERPICS_SUCCESS";
@@ -17,67 +18,72 @@ export const EDIT_USERPICS_FAILURE = "EDIT_USERPICS_FAILURE";
 export const fetchPics=() =>{
     return dispatch => {
         dispatch({type: FETCH_USERPICS_START});
-        api()
-        .get(/*endpoint for pics*/)
+        unsplash()
+        .get("users/jchartier/photos")
         .then(response => {
-            dispatch({type: FETCH_USERPICS_SUCCESS, payload: response.data})
+            dispatch({type: FETCH_USERPICS_SUCCESS, payload: response.data});
         })
         .catch(error => {
-            dispatch({tupe: FETCH_USERPICS_FAILURE, payload: error})
+            dispatch({type: FETCH_USERPICS_FAILURE, payload: error});
         });
     };
 }
 
-export const postPics = (/* post parameters here */) => {
+export const postPics = ({title, description, image}) => {
     return dispatch => {
         dispatch({type: POST_USERPICS_START});
         api()
-        .post("/*endpoint for pics*/")
+        .post("/api/photos/1", {
+            title: title,
+            description: description,
+            image: image
+        })
         .then(response => {
-            dispatch({type: POST_USERPICS_SUCCESS, payload: response.data})
+            dispatch({type: POST_USERPICS_SUCCESS, payload: response.data});
                 api()
-                .get(/*endpoint for pics*/)
+                .get('users/jchartier/photos')
+                    // "/api/photos/1")
                 .then(response => {
-                    dispatch({type: FETCH_USERPICS_SUCCESS, payload: response.data})
+                    dispatch({type: FETCH_USERPICS_SUCCESS, payload: response.data});
                  })
                 .catch(error => {
-                    dispatch({tupe: FETCH_USERPICS_FAILURE, payload: error})
+                    dispatch({type: FETCH_USERPICS_FAILURE, payload: error});
                     });
         })
         .catch(error => {
-            dispatch({tupe: POST_USERPICS_FAILURE, payload: error})
+            dispatch({type: POST_USERPICS_FAILURE, payload: error});
         });
     };
-
 }
 
-export const editPics = (id, data) => {
+export const editPic = (id, data) => {
     return dispatch => {
         dispatch({type: EDIT_USERPICS_START});
         api()
-        .put("/*endpoint for pics*/")
+        .put(`/photos/${id}`)
+            // ` /api/photos/1/${id}`, data)
         .then(response => {
-            dispatch({type: EDIT_USERPICS_SUCCESS, payload: response.data})
+            dispatch({type: EDIT_USERPICS_SUCCESS, payload: response.data});
+            dispatch(fetchPics());
         })
         .catch(error => {
-            dispatch({tupe: EDIT_USERPICS_FAILURE, payload: error})
+            dispatch({type: EDIT_USERPICS_FAILURE, payload: error});
         });
     };
-
 }
 
-export const deletePics = (id) => {
+export const deletePic = (id) => {
     return dispatch => {
         dispatch({type: DELETE_USERPICS_START});
         api()
-        .get("/*endpoint for pics*/")
+        .delete(`/api/photos/1/${id}`)
         .then(response => {
-            dispatch({type: DELETE_USERPICS_SUCCESS, payload: response.data})
+            dispatch({type: DELETE_USERPICS_SUCCESS, payload: response.data});
+            dispatch(fetchPics());
         })
         .catch(error => {
-            dispatch({tupe: DELETE_USERPICS_FAILURE, payload: error})
+            dispatch({type: DELETE_USERPICS_FAILURE, payload: error});
         });
     };
-
 }
 
