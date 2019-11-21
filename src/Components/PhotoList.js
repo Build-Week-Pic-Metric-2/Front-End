@@ -25,10 +25,10 @@ const PhotoList = (props) => {
             <p>{image.description}</p>
             <img src={image.urls.thumb} alt=""/>
         
-
-            <Link to={`/edit-pic/${image.id}`}>Edit Photo</Link>
-            
-            <button className="delete" onClick={()=>{dispatch(deletePic(image.id))}}>Delete Photo</button>
+            <div className='pCardBtnContainer'>
+                <Link to={`/edit-pic/${image.id}`}>Edit Photo</Link>
+                <button className="delete" onClick={()=>{dispatch(deletePic(image.id))}}>Delete Photo</button>
+            </div>
     </div>
               )}
         ) : null

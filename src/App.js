@@ -16,6 +16,7 @@ import EditPic from "./Components/EditPic"
 export default function App() {
 
   return (
+      <React.Fragment>
       <section className='main'>
         {/*<Header />*/}
 
@@ -24,13 +25,17 @@ export default function App() {
         <Route path="/register" component={Register}/>
         {/* <Route path="/alternate" component={Form} /> */}
         <Route exact path="/login" component={Login} />
-        <Route exact path="/account" render ={props => (
-         <Account {...props}/>
-        )}/>
+
         <ProtectedRoute exact path='/logout' component={Logout} />
         <ProtectedRoute exact path='/edit-pic/:id' component={EditPic} />
 
       </section>
+      <section className='account-content'>
+          <Route exact path="/account" render ={props => (
+              <Account {...props}/>
+          )}/>
+      </section>
+      </React.Fragment>
   )
 
 }

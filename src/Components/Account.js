@@ -1,9 +1,28 @@
 import React, {useState} from 'react'
 import {useSelector, useDispatch} from "react-redux";
 import ImageUploader from 'react-images-upload';
+import { Input } from "@material-ui/core";
 
 import PhotoList from "./PhotoList"
 import { postPics } from '../actions/actions';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  display: inline-block;
+  border-radius: 3px;
+  padding: .5rem 0;
+  margin: .5rem 1rem;
+  width: 10rem;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  :hover{
+  background: lightgrey;
+  }, 
+`;
 
 
 const Account = (props) =>{
@@ -42,10 +61,14 @@ const Account = (props) =>{
     return (
       <div className="account-container">
         <div className="add-photo">
-        <h2>Welcome {username}</h2>
-        <p>Upload a New Image:</p>
-        <label>Title: <input type="text" placeholder="Title" name="title" onChange={handleChange}/></label>
-        <input type="url" name="photo_url" onChange={handleChange}/>
+          <h2 style={{textAlign: 'center'}}>Welcome {username}</h2>
+        <div className='upload-container'>
+         <div className='image-desc'>
+              <p>Upload a New Image:</p>
+              <label><Input type="text" placeholder="Title" name="title" onChange={handleChange}/></label>
+              <input type="url" name="photo_url" onChange={handleChange}/>
+         </div>
+
         {/* <label>Description: <input type="text" placeholder="Description of Photo" name="description" onChange={handleChange}/></label> */}
         {/* <img src={images.name} alt={newPhoto.description}/> */}
         {/* <ImageUploader
@@ -55,10 +78,14 @@ const Account = (props) =>{
         imgExtension={['.jpg', '.gif', '.png', '.gif']}
         maxFileSize={5242880}
         />          */}
-        <button type="submit" onClick={handleUpload} name="image">Upload Image</button>    
-        <PhotoList props={props}/>
+        
+          <div className='upload-image'>
+            <button type="submit" onClick={handleUpload} name="image">Upload Image</button>
+          </div>
+        </div>      
+        <div className='account-photos'>
+          <PhotoList props={props}/>
         </div>
-             
       </div>
     )
 }
