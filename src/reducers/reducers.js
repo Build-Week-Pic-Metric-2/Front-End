@@ -50,7 +50,8 @@ export const initialState = {
         case EDIT_USERPICS_START:
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+                pics: [...state.pics, action.payload]
             }
         case EDIT_USERPICS_SUCCESS: 
             return {

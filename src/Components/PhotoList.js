@@ -23,7 +23,7 @@ const PhotoList = (props) => {
             <div className="image-container">
             <h2>{image.title}</h2>
             <p>{image.description}</p>
-            <img src={image.urls.small} alt=""/>
+            <img src={image.urls.thumb} alt=""/>
         
 
             <Link to={`/edit-pic/${image.id}`}>Edit Photo</Link>

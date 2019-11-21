@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import api from "../helpers/api";
+import {axiosWithAuth} from "../helpers/api";
 import Button from '@material-ui/core/Button';
 import TextField from "@material-ui/core/TextField";
 
@@ -21,7 +21,7 @@ const Login = (props) => {
 }
 const handleSubmit = e => {
     e.preventDefault();
-    api()
+    axiosWithAuth
     .post("api/auth/login", data)
     .then(response => {
         console.log(response);
