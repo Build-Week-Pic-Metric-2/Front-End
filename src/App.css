@@ -26,15 +26,15 @@
 }
 .add-photo{
   margin-top: 5%;
-  display: flex;
-  flex-direction: column;
+  /*display: flex;*/
+  /*flex-direction: column;*/
   align-items: center;
   border: 2px solid #d698b9;
   background: #d698b9;
   border-radius: 30px;
   padding-bottom: 3%;
   box-shadow: 5px 5px 10px 10px;
-  width: 30%;
+  width: 60%;
 }
 .update-form{
   display: flex;
@@ -133,4 +133,37 @@
   border: 2px solid sienna;
   background: #d698b9;
   padding: 1%;
+}
+.image-container{
+  max-width: 33%;
+  display: flex;
+  flex-direction: column;
+}
+.account-photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.upload-image{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.fileContainer {
+  width: 250px;
+}
+.image-desc{
+  background: #fff;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 2%
+}
+.upload-container{
+  display: flex;
+  justify-content: space-around;
+}
+.upload-btn{
+  border: 1px solid white;
 }
