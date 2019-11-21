@@ -5,6 +5,7 @@ import api from "../helpers/api"
 import { editPic } from '../actions/actions';
 import collage from "./images/piccollage.jpg"
 import unsplash from "../helpers/unsplash"
+import Input from '@material-ui/core/Input'
 
 const EditPic = (props) => {
     console.log("EditPic",props)
@@ -56,8 +57,8 @@ const EditPic = (props) => {
             <form onSubmit={handleSubmit}>
                 {pic && pic.length > 0 ? 
                 pic.tag.map(pic=>{
-                return <label> Title: <input type="text" name="title" placehold="Movie Title" value={pic.title} onChange={handleChange}/></label>}):null}
-                <label>Description: <input type="text" name="director" placehold="Movie Director" value={pic.description} onChange={handleChange}/></label>
+                return <label> Title: <Input type="text" name="title" placehold="Movie Title" value={pic.title} onChange={handleChange}/></label>}):null}
+                <label>Description: <Input type="text" name="director" placehold="Movie Director" value={pic.description} onChange={handleChange}/></label>
                 <img src={image} width="400" alt={state.pics.description} /> 
                 <button className="update-save" type="submit">Save</button>
             </form>
