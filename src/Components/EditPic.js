@@ -22,11 +22,15 @@ const EditPic = (props) => {
     useEffect(() => {
         console.log(id)
         unsplash()
-        .get(`/photos/${id}`)
+        .get(`/photos/${id}`,)
         .then(response => {
-            console.log(response)
-            setPic(response.data)
+            console.log(response.data)
+            setPic({
+                title: response.data.location.title,
+                description: response.data.description
+            })
             setImage(response.data.urls.small)
+
         })
         .catch(error => {
             console.log(error)
@@ -44,29 +48,23 @@ const EditPic = (props) => {
         event.preventDefault();
         dispatch(editPic(pic));        
     }
-    console.log("pic",pic)
+    console.log("pic",pic.title, pic.description)
     console.log("state", state)
     console.log("images", image)
     
     return(
         <div className="update-form">
-             <h1>Update Pic Info</h1>
-            
-        <div className="edit-pic">      
-            <form onSubmit={handleSubmit}>
-                {pic && pic.length > 0 ? 
-                pic.tag.map(pic=>{
-                return <label> Title: <input type="text" name="title" placehold="Movie Title" value={pic.title} onChange={handleChange}/></label>}):null}
-                <label>Description: <input type="text" name="director" placehold="Movie Director" value={pic.description} onChange={handleChange}/></label>
-                <img src={image} width="400" alt={state.pics.description} /> 
-                <button className="update-save" type="submit">Save</button>     
-                }          
-            </form>
+            <div className="edit-pic"> 
+                <h1>Update Pic Info</h1>
+                <form onSubmit={handleSubmit}>                
+                    <label> Title: <input type="text" name="title" placeholder="Pic Title" value={pic.title} onChange={handleChange}/></label>
+                    <label>Description: <input type="text" name="description" placeholder="Pic Description" value={pic.description} onChange={handleChange}/></label>
+                    <img src={image} width="400" alt={state.pics.description} />
+                    <button className="update-save" type="submit">Save</button>  
+                </form>
         </div>
-        
         </div>
     )
-
 }
 
 export default EditPic;
