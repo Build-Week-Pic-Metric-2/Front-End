@@ -79,7 +79,7 @@ import TextField from "@material-ui/core/TextField";
 import {withFormik, Form } from "formik";
 import * as Yup from "yup";
 // import axios from "axios";
-import api from "../helpers/api";
+import {axiosWithAuth} from "../helpers/api";
 
 
 const RegistrationForm = ({username, password, confirmPassword, errors, touched, handleChange, setFieldTouched}) =>{
@@ -162,7 +162,7 @@ const FormikUserForm = withFormik({
             .oneOf([Yup.ref("password")], "Password does not match")
     }),
     handleSubmit({ username, password, props}){
-        api()
+        axiosWithAuth
             .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
                 console.log(res);

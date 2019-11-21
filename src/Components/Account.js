@@ -62,12 +62,12 @@ const Account = (props) =>{
       <div className="account-container">
         <div className="add-photo">
           <h2 style={{textAlign: 'center'}}>Welcome {username}</h2>
-        <div className='upload-container'>
-         <div className='image-desc'>
-              <p>Upload a New Image:</p>
-              <label><Input type="text" placeholder="Title" name="title" onChange={handleChange}/></label>
-              <input type="url" name="photo_url" onChange={handleChange}/>
-         </div>
+            <div className='upload-container'>
+                <div className='image-desc'>
+                    <p>Upload a New Image:</p>
+                    <label><Input type="text" placeholder="Title" name="title" onChange={handleChange}/></label>
+                    <Input type="url" name="photo_url" onChange={handleChange}/>
+                </div>
 
         {/* <label>Description: <input type="text" placeholder="Description of Photo" name="description" onChange={handleChange}/></label> */}
         {/* <img src={images.name} alt={newPhoto.description}/> */}
@@ -79,12 +79,13 @@ const Account = (props) =>{
         maxFileSize={5242880}
         />          */}
         
-          <div className='upload-image'>
-            <button type="submit" onClick={handleUpload} name="image">Upload Image</button>
-          </div>
-        </div>      
-        <div className='account-photos'>
-          <PhotoList props={props}/>
+                <div className='upload-image'>
+                    <button type="submit" onClick={handleUpload} name="image">Upload Image</button>
+                </div>
+            </div>
+            <div className='account-photos'>
+                <PhotoList props={props}/>
+            </div>
         </div>
       </div>
     )
