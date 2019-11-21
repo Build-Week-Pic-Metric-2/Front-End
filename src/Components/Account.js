@@ -30,8 +30,10 @@ const Account = (props) =>{
 
     const state = useSelector(state => state);
     const [newPhoto, setNewPhoto]=useState({      
-      title: '',
-      description: '',
+      // title: '',
+      // description: '',
+      title: "",
+      url: ""
     });
     const [images, setImages] = useState([])
     const dispatch = useDispatch();    
@@ -43,11 +45,11 @@ const Account = (props) =>{
     })
     }
 
-     const onDrop = (pic) => {
-      setImages(
-          state.pics.concat(pic),
-      );
-    }
+    //  const onDrop = (pic) => {
+    //   setImages(
+    //       state.pics.concat(pic),
+    //   );
+    // }
 
    const handleUpload=()=>{
      dispatch(postPics(newPhoto, images))    
@@ -59,26 +61,28 @@ const Account = (props) =>{
     return (
       <div className="account-container">
         <div className="add-photo">
-            <h2 style={{textAlign: 'center'}}>Welcome {username}</h2>
-            <div className='upload-container'>
-                <div className='image-desc'>
-                    <p>Upload a New Image:</p>
-                    <label><Input type="text" placeholder="Title" name="title" onChange={handleChange}/></label>
-                    <label><Input type="text" placeholder="Description of Photo" name="description" onChange={handleChange}/></label>
-                    <img src={images.name} alt={newPhoto.description}/>
-                </div>
-                <div className='upload-image'>
-                    <ImageUploader
-                    withIcon={true}
-                    buttonText='Choose images'
-                    onChange={onDrop}
-                    imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                    maxFileSize={5242880}
-                    />
-                    <Button className='upload-btn' type="submit" onClick={handleUpload} name="image">Upload Image</Button>
-                </div>
-            </div>
-        </div>
+          <h2 style={{textAlign: 'center'}}>Welcome {username}</h2>
+        <div className='upload-container'>
+         <div className='image-desc'>
+              <p>Upload a New Image:</p>
+              <label><Input type="text" placeholder="Title" name="title" onChange={handleChange}/></label>
+              <input type="url" name="photo_url" onChange={handleChange}/>
+         </div>
+
+        {/* <label>Description: <input type="text" placeholder="Description of Photo" name="description" onChange={handleChange}/></label> */}
+        {/* <img src={images.name} alt={newPhoto.description}/> */}
+        {/* <ImageUploader
+        withIcon={true}
+        buttonText='Choose images'
+        onChange={onDrop}
+        imgExtension={['.jpg', '.gif', '.png', '.gif']}
+        maxFileSize={5242880}
+        />          */}
+        
+          <div className='upload-image'>
+            <button type="submit" onClick={handleUpload} name="image">Upload Image</button>
+          </div>
+        </div>      
         <div className='account-photos'>
           <PhotoList props={props}/>
         </div>

@@ -23,11 +23,15 @@ const EditPic = (props) => {
     useEffect(() => {
         console.log(id)
         unsplash()
-        .get(`/photos/${id}`)
+        .get(`/photos/${id}`,)
         .then(response => {
-            console.log(response)
-            setPic(response.data)
+            console.log(response.data)
+            setPic({
+                title: response.data.location.title,
+                description: response.data.description
+            })
             setImage(response.data.urls.small)
+
         })
         .catch(error => {
             console.log(error)
@@ -45,15 +49,14 @@ const EditPic = (props) => {
         event.preventDefault();
         dispatch(editPic(pic));        
     }
-    console.log("pic",pic)
+    console.log("pic",pic.title, pic.description)
     console.log("state", state)
     console.log("images", image)
     
     return(
         <div className="update-form">
-             <h1>Update Pic Info</h1>
-            
-        <div className="edit-pic">      
+             <h1>Update Pic Info</h1>            
+          <div className="edit-pic">      
             <form onSubmit={handleSubmit}>
                 {pic && pic.length > 0 ? 
                 pic.tag.map(pic=>{
@@ -62,11 +65,9 @@ const EditPic = (props) => {
                 <img src={image} width="400" alt={state.pics.description} /> 
                 <button className="update-save" type="submit">Save</button>
             </form>
-        </div>
-        
+          </div>
         </div>
     )
-
 }
 
 export default EditPic;
