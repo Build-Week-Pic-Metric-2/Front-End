@@ -59,8 +59,7 @@ const EditPic = (props) => {
                 return <label> Title: <input type="text" name="title" placehold="Movie Title" value={pic.title} onChange={handleChange}/></label>}):null}
                 <label>Description: <input type="text" name="director" placehold="Movie Director" value={pic.description} onChange={handleChange}/></label>
                 <img src={image} width="400" alt={state.pics.description} /> 
-                <button className="update-save" type="submit">Save</button>     
-                }          
+                <button className="update-save" type="submit">Save</button>
             </form>
         </div>
         

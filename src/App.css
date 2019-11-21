@@ -38,6 +38,7 @@
 }
 .update-form{
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -51,11 +52,12 @@
   border-radius: 30px;
   padding-bottom: 3%;
   box-shadow: 5px 5px 10px 10px;
-  width: 30%;
+  width: 100%;
 }
 
 .edit-pic form{
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 .edit-pic label{
@@ -128,7 +130,7 @@
   align-items: center;
   flex-direction: column;
   margin: 4% auto;
-  max-width: 500px;
+  max-width: 640px;
   border-radius: 5px;
   border: 2px solid sienna;
   background: #d698b9;
@@ -136,8 +138,49 @@
 }
 .image-container{
   max-width: 33%;
+  width: 340px;
   display: flex;
   flex-direction: column;
+  padding: 1%;
+  margin: 5%;
+  border: 1px solid sienna;
+  background: #d698b9;
+  align-items: center;
+}
+.image-container h2 {
+  margin: unset;
+}
+.image-container img {
+  margin: auto;
+}
+.image-container a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100px;
+  height: 40px;
+  margin: auto 1%;
+}
+.pCardBtnContainer{
+  display: flex;
+  margin-top: 2%;
+}
+.image-container button{
+  display: flex;
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100px;
+  height: 42px;
+  margin: auto;
 }
 .account-photos {
   display: flex;

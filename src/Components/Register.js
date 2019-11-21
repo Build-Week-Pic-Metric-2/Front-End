@@ -163,7 +163,7 @@ const FormikUserForm = withFormik({
     }),
     handleSubmit({ username, password, props}){
         api()
-            .post("api/auth/register", {username, password})
+            .post("https://picmetric1.herokuapp.com/api/auth/register", {username, password})
             .then(res =>{
                 console.log(res);
                 props.history.push("/login")
